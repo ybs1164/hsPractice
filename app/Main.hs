@@ -6,35 +6,44 @@ main = do
 
 
 type Position = (Float, Float)
+
 data Team = White | Black | Grey
-
--- card
-
--- map
-type Map = (Int, Int)
-
--- objects
-data Stone = Stone {
-    stonePosition :: Position
-  , stoneRadius :: Float
-  , stoneFriction :: Float }
 
 data Dir = U | D | L | R
 
+-- card (todo)
+data Card = Card {
+    cardName   :: String
+  , cardCost   :: Int
+  , cardAction :: [String] }
+
+-- first : target selected
+-- second : 
+
+type Map = (Int, Int)
+
+
+data Stone = Stone {
+    stonePosition :: Position
+  , stoneRadius   :: Float
+  , stoneFriction :: Float }
+
 data Wall = Wall {
     wallPosition :: Position
-  , wallLength :: Float
-  , wallDir :: Dir }
+  , wallLength   :: Float
+  , wallDir      :: Dir }
 
--- players
+
 data Player = Player {
-    playerId :: Int
+    playerId   :: Int
   , playerTeam :: Team
-  , playerName :: String }
+  , playerName :: String
+  , playerDeck :: [Card] }
 
 -- games
 data Game = Game {
-    player1 :: Player
-  , player2 :: Player
+    player1  :: Player
+  , player2  :: Player
+  , turn     :: Bool
   , gameName :: String }
 
